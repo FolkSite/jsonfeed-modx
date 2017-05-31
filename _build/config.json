@@ -1,0 +1,104 @@
+{
+  "name": "JsonFeed",
+  "lowCaseName": "jsonfeed",
+  "description": "JSONFeed.org for MODX",
+  "author": "Wayne Roddy",
+  "version": "1.0.0",
+  "package": {
+      "elements": {
+          "tvs": [
+            {
+              "caption": "Include this page",
+              "name": "jsonfeed_include",
+              "description": "Overrides the fact this resource is Hidden or Unpublished",
+              "type": "checkbox",
+              "inputOptionValues": "Yes==yes",
+              "sortOrder": 0,
+              "inputProperties": {
+                "allowBlank": 1
+              }
+            },
+            {
+              "caption": "Title Input",
+              "name": "jsonfeed_title",
+              "description": "",
+              "type": "listbox",
+              "inputOptionValues": "pagetitle||longtitle",
+              "sortOrder": 1,
+              "inputProperties": {
+                "allowBlank": 1
+              }
+            },
+            {
+              "caption": "Content Text",
+              "name": "jsonfeed_text",
+              "description": "",
+              "type": "listbox",
+              "inputOptionValues": "description||introtext",
+              "sortOrder": 2,
+              "inputProperties": {
+                "allowBlank": 1
+              }
+            },
+            {
+              "caption": "Content HTML",
+              "name": "jsonfeed_html",
+              "description": "Use the Content from this resource",
+              "type": "listbox",
+              "inputOptionValues": "yes||no",
+              "sortOrder": 3,
+              "inputProperties": {
+                "allowBlank": 1
+              }
+            },
+            {
+              "caption": "Image",
+              "name": "jsonfeed_image",
+              "description": "",
+              "type": "image",
+              "sortOrder": 4,
+              "inputProperties": {
+                "allowBlank": 1
+              }
+            }
+          ],
+          "snippets": [
+            {
+              "name": "JsonFeedOrg"
+            }
+          ],
+          "chunks": [
+              {
+                "name": "JsonFeedOrg_item",
+                "file": "jsonfeed.chunk.tpl"
+              }
+          ],
+          "templates": [
+              {
+                  "name": "JsonFeedOrg",
+                  "file": "jsonfeed.template.tpl",
+                  "icon": "icon-rss"
+              }
+          ]
+      },
+      "resources": [
+        {
+            "pagetitle": "jsonfeed",
+            "longtitle": "",
+            "alias": "feed",
+            "template": "JsonFeedOrg",
+            "content_type": 7,
+            "isfolder": 0,
+            "published": 1,
+            "hidemenu": 1,
+            "searchable":0,
+            "richtext":0
+        }
+      ]
+  },
+  "build": {
+    "readme": "docs/index.md",
+    "license": "docs/license.md",
+    "changelog": "docs/changelog.md"
+  }
+}
