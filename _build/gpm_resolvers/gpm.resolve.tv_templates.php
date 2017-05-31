@@ -6,6 +6,10 @@
  *
  * @package jsonfeed
  * @subpackage build
+ *
+ * @var mixed $object
+ * @var modX $modx
+ * @var array $options
  */
 
 if ($object->xpdo) {
@@ -15,12 +19,22 @@ if ($object->xpdo) {
         case xPDOTransport::ACTION_UPGRADE:
             /* list of tvs and templates for each */
             $tvs = array (
-              'jsonfeed_include' => array (),
-              'jsonfeed_title' => array (),
-              'jsonfeed_text' => array (),
-              'jsonfeed_html' => array (),
-              'jsonfeed_image' => array ()
-            );
+  'jsonfeed_include' => 
+  array (
+  ),
+  'jsonfeed_title' => 
+  array (
+  ),
+  'jsonfeed_text' => 
+  array (
+  ),
+  'jsonfeed_html' => 
+  array (
+  ),
+  'jsonfeed_image' => 
+  array (
+  ),
+);
             foreach ($tvs as $tvName => $templateNames) {
                 if (!is_array($templateNames) || empty($templateNames)) continue;
                 $tv = $modx->getObject('modTemplateVar',array('name' => $tvName));
@@ -56,4 +70,5 @@ if ($object->xpdo) {
             break;
     }
 }
+
 return true;
