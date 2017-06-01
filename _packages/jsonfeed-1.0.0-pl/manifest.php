@@ -28,8 +28,12 @@ THE SOFTWARE.',
 MODX plugin to add a JSON Feed to your site with Template Variables to customize the feed per resource. https://jsonfeed.org/
 
 After Install:
-1. update the "templates" you want to list in the installed template. The default is "1".
-2. update the Template => TV Access for the custom options
+1. Update the "templates" comma string to include which templates you want to list in the **JsonFeed template**. The default is "1".
+   Example:
+   ```
+   [[!JsonFeed? &templates=`1,2,3,4`]]
+   ```
+2. Update the Template => TV Access for the custom options
 
 **Friendly URLs must be turned ON**
 ',
@@ -44,9 +48,9 @@ After Install:
       'vehicle_package' => 'transport',
       'vehicle_class' => 'xPDOObjectVehicle',
       'class' => 'modNamespace',
-      'guid' => 'f4e1ad4b99c418e8f5fbcc2e867c80d5',
+      'guid' => '868df0061e6745b6a596a4ff470866f3',
       'native_key' => 'jsonfeed',
-      'filename' => 'modNamespace/47a39afd56abb3c2957effe5ace879d7.vehicle',
+      'filename' => 'modNamespace/75047754d7b16e0cdf56ab80b976d7ea.vehicle',
       'namespace' => 'jsonfeed',
     ),
     1 => 
@@ -54,9 +58,9 @@ After Install:
       'vehicle_package' => 'transport',
       'vehicle_class' => 'xPDOObjectVehicle',
       'class' => 'modCategory',
-      'guid' => '77fefedbfac9d005d8ec80779420f6a9',
+      'guid' => '25e4b006bb2e95e818c205e90fbf9910',
       'native_key' => NULL,
-      'filename' => 'modCategory/3042b79518d4ba339113a23852c019eb.vehicle',
+      'filename' => 'modCategory/b9a33f4ecd602da15de6bc2f8296dcb3.vehicle',
       'namespace' => 'jsonfeed',
     ),
   ),

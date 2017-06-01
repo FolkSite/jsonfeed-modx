@@ -1,0 +1,193 @@
+<?php return array (
+  'unique_key' => 'category',
+  'preserve_keys' => false,
+  'update_object' => true,
+  'related_objects' => 
+  array (
+    'Chunks' => 
+    array (
+      'ee34be49cd71e68930cb8ce22a5b4ee7' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modChunk',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"name":"JsonFeedOrg_item","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"{\\n    \\"id\\": \\"[[+id]]\\",\\n    \\"title\\": \\"[[+title]]\\",\\n    \\"image\\": \\"[[+image]]\\",\\n    \\"content_text\\": \\"[[+text]]\\",\\n    \\"content_html\\": \\"[[+html]]\\",\\n    \\"url\\": \\"[[+url]]\\",\\n    \\"date_published\\": \\"[[+date]]\\"\\n},\\n","locked":0,"properties":"a:0:{}","static":0,"static_file":"","content":"{\\n    \\"id\\": \\"[[+id]]\\",\\n    \\"title\\": \\"[[+title]]\\",\\n    \\"image\\": \\"[[+image]]\\",\\n    \\"content_text\\": \\"[[+text]]\\",\\n    \\"content_html\\": \\"[[+html]]\\",\\n    \\"url\\": \\"[[+url]]\\",\\n    \\"date_published\\": \\"[[+date]]\\"\\n},\\n"}',
+        'guid' => 'b6e077378fbc88b7874ffbe659800306',
+        'native_key' => NULL,
+        'signature' => '38199a4a1e4f1c00dc6cf254c8f27167',
+      ),
+    ),
+    'Snippets' => 
+    array (
+      '3d251db08e5779627fc099041b9448af' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modSnippet',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"name":"JsonFeedOrg","description":"","editor_type":0,"category":0,"cache_type":0,"snippet":"\\/**\\n * JsonFeed\\n * Based on https:\\/\\/jsonfeed.org\\/\\n *\\n * JsonFeed is free software; you can redistribute it and\\/or modify it\\n * under the terms of the MIT License\\n *\\n *\\n * Usage [[!JsonFeed? &templates=`1,2,3,4`]]\\n *\\n *\\/\\n\\n $input = $modx->getOption(\'templates\', $scriptProperties);\\n $templates = explode(\\",\\", $input);\\n\\n $q = $modx->newQuery(\'modResource\');\\n $q->where(array(\\n   \'deleted\'=>\'0\',\'template:IN\' => $templates,\\n ));\\n $q->sortby(\'menuindex\',\'ASC\');\\n $resources = $modx->getCollection(\'modResource\', $q);\\n\\n $output = \\"\\";\\n $x = array();\\n\\n foreach ($resources as $res) {\\n     $canParse = true;\\n     $hidden = $res->get(\'hidemenu\');\\n     $published = $res->get(\'published\');\\n\\n     if($hidden == 1 || $published == 0){ $canParse = false; }\\n\\n     \\/\\/override TV\\n     $overrideParse = $res->getTVValue(\'jsonfeed_include\');\\n     if($overrideParse == \\"yes\\"){ $canParse = true; }\\n\\n     if ($canParse) {\\n         $id = $res->get(\'id\');\\n         $x[\'id\'] = $id;\\n\\n         $x[\'url\'] = $modx->makeUrl($id,\'\',\'\',\'full\');\\n\\n         \\/* Get the date *\\/\\n         $date = $res->get(\'editedon\') ? $res->get(\'editedon\') : $res->get(\'createdon\');\\n         $x[\'date\'] = $date;\\n\\n         $x[\'image\'] = $res->getTVValue(\'jsonfeed_image\');\\n\\n         \\/* Title Choice *\\/\\n         $title_choice = $res->getTVValue(\'jsonfeed_title\');\\n         if(!$title_choice){\\n           $x[\'title\'] = $res->get(\'pagetitle\');\\n         } else {\\n           $x[\'title\'] = $res->get($title_choice);\\n         }\\n\\n         \\/* Text Choice *\\/\\n         $text_choice = $res->getTVValue(\'jsonfeed_text\');\\n         if(!$text_choice){\\n           $x[\'text\'] = $res->get(\'description\');\\n         } else {\\n           $x[\'text\'] = $res->get($text_choice);\\n         }\\n\\n         \\/* HTML Choice *\\/\\n         $html_choice = $res->getTVValue(\'jsonfeed_html\');\\n         if($html_choice == \\"no\\"){\\n           $x[\'html\'] = \\"\\";\\n         } else {\\n           $x[\'html\'] = $res->get(\'content\');\\n         }\\n\\n\\n         \\/* add item to output *\\/\\n         $output .= $modx->parseChunk(\'JsonFeedOrg_item\', $x);\\n     }\\n }\\n\\n return $output;","locked":0,"properties":"a:0:{}","moduleguid":"","static":0,"static_file":"","content":"\\/**\\n * JsonFeed\\n * Based on https:\\/\\/jsonfeed.org\\/\\n *\\n * JsonFeed is free software; you can redistribute it and\\/or modify it\\n * under the terms of the MIT License\\n *\\n *\\n * Usage [[!JsonFeed? &templates=`1,2,3,4`]]\\n *\\n *\\/\\n\\n $input = $modx->getOption(\'templates\', $scriptProperties);\\n $templates = explode(\\",\\", $input);\\n\\n $q = $modx->newQuery(\'modResource\');\\n $q->where(array(\\n   \'deleted\'=>\'0\',\'template:IN\' => $templates,\\n ));\\n $q->sortby(\'menuindex\',\'ASC\');\\n $resources = $modx->getCollection(\'modResource\', $q);\\n\\n $output = \\"\\";\\n $x = array();\\n\\n foreach ($resources as $res) {\\n     $canParse = true;\\n     $hidden = $res->get(\'hidemenu\');\\n     $published = $res->get(\'published\');\\n\\n     if($hidden == 1 || $published == 0){ $canParse = false; }\\n\\n     \\/\\/override TV\\n     $overrideParse = $res->getTVValue(\'jsonfeed_include\');\\n     if($overrideParse == \\"yes\\"){ $canParse = true; }\\n\\n     if ($canParse) {\\n         $id = $res->get(\'id\');\\n         $x[\'id\'] = $id;\\n\\n         $x[\'url\'] = $modx->makeUrl($id,\'\',\'\',\'full\');\\n\\n         \\/* Get the date *\\/\\n         $date = $res->get(\'editedon\') ? $res->get(\'editedon\') : $res->get(\'createdon\');\\n         $x[\'date\'] = $date;\\n\\n         $x[\'image\'] = $res->getTVValue(\'jsonfeed_image\');\\n\\n         \\/* Title Choice *\\/\\n         $title_choice = $res->getTVValue(\'jsonfeed_title\');\\n         if(!$title_choice){\\n           $x[\'title\'] = $res->get(\'pagetitle\');\\n         } else {\\n           $x[\'title\'] = $res->get($title_choice);\\n         }\\n\\n         \\/* Text Choice *\\/\\n         $text_choice = $res->getTVValue(\'jsonfeed_text\');\\n         if(!$text_choice){\\n           $x[\'text\'] = $res->get(\'description\');\\n         } else {\\n           $x[\'text\'] = $res->get($text_choice);\\n         }\\n\\n         \\/* HTML Choice *\\/\\n         $html_choice = $res->getTVValue(\'jsonfeed_html\');\\n         if($html_choice == \\"no\\"){\\n           $x[\'html\'] = \\"\\";\\n         } else {\\n           $x[\'html\'] = $res->get(\'content\');\\n         }\\n\\n\\n         \\/* add item to output *\\/\\n         $output .= $modx->parseChunk(\'JsonFeedOrg_item\', $x);\\n     }\\n }\\n\\n return $output;"}',
+        'guid' => '8f204f88591400257f313221e49fc754',
+        'native_key' => NULL,
+        'signature' => '61d4c57312c26dde3afde732937b95e6',
+      ),
+    ),
+    'Templates' => 
+    array (
+      'e0a93977a679d9859bf005f16d49f476' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'templatename',
+        'class' => 'modTemplate',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"templatename":"JsonFeedOrg","description":"","editor_type":0,"category":0,"icon":"icon-rss","template_type":0,"content":"{\\n    \\"version\\": \\"https:\\/\\/jsonfeed.org\\/version\\/1\\",\\n    \\"title\\": \\"[[++site_name]]\\",\\n    \\"home_page_url\\": \\"[[!++site_url]]\\",\\n    \\"feed_url\\": \\"[[!++site_url]]feed.json\\",\\n    \\"items\\": [\\n        [[!JsonFeedOrg? &templates=`1`]]\\n    ]\\n}\\n","locked":0,"properties":"a:0:{}","static":0,"static_file":""}',
+        'guid' => 'edeae033b0cd5839ff5cd302fe08bf86',
+        'native_key' => NULL,
+        'signature' => '00fc56b9a0cea0e65769cd50d7a3cc7d',
+      ),
+    ),
+    'TemplateVars' => 
+    array (
+      'f4acfdaa58593928936fe778b68456e4' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modTemplateVar',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"type":"checkbox","name":"jsonfeed_include","caption":"Include this page","description":"Overrides the fact this resource is Hidden or Unpublished","editor_type":0,"category":0,"locked":0,"elements":"Yes==yes","rank":0,"display":"","default_text":"","properties":"a:0:{}","input_properties":"a:1:{s:10:\\"allowBlank\\";i:1;}","output_properties":null,"static":0,"static_file":"","content":""}',
+        'guid' => '6a9a158ad9ce8cce53d8085c45ea603e',
+        'native_key' => NULL,
+        'signature' => '2faab68f81c252bffd17d1136964d2ac',
+      ),
+      '76af223080099b821bc5a1bc49b29408' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modTemplateVar',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"type":"listbox","name":"jsonfeed_title","caption":"Title Input","description":"","editor_type":0,"category":0,"locked":0,"elements":"pagetitle||longtitle","rank":1,"display":"","default_text":"","properties":"a:0:{}","input_properties":"a:1:{s:10:\\"allowBlank\\";i:1;}","output_properties":null,"static":0,"static_file":"","content":""}',
+        'guid' => 'a1eda9464041627cde85da740769ddc3',
+        'native_key' => NULL,
+        'signature' => '27b7407d99cb7096fb83673c5721c9c7',
+      ),
+      'a53aeb85bf1deebf61bc974bfe8d2e7f' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modTemplateVar',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"type":"listbox","name":"jsonfeed_text","caption":"Content Text","description":"","editor_type":0,"category":0,"locked":0,"elements":"description||introtext","rank":2,"display":"","default_text":"","properties":"a:0:{}","input_properties":"a:1:{s:10:\\"allowBlank\\";i:1;}","output_properties":null,"static":0,"static_file":"","content":""}',
+        'guid' => '66a6e3206be0c9f25a9e9ea5d02f244e',
+        'native_key' => NULL,
+        'signature' => '04bfdf9988ff86bce54909b3e779c1d8',
+      ),
+      '0a0673fdc555a7f31862acf4bd8fa446' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modTemplateVar',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"type":"listbox","name":"jsonfeed_html","caption":"Content HTML","description":"Use the Content from this resource","editor_type":0,"category":0,"locked":0,"elements":"no||yes","rank":3,"display":"","default_text":"","properties":"a:0:{}","input_properties":"a:1:{s:10:\\"allowBlank\\";i:1;}","output_properties":null,"static":0,"static_file":"","content":""}',
+        'guid' => 'a7a2ecea60453a1b8585aa294780403c',
+        'native_key' => NULL,
+        'signature' => 'fb91fdb9847dcee8fdf281f17621f0eb',
+      ),
+      'd42ce24c5d7583d95ba85e954d4314fc' => 
+      array (
+        'preserve_keys' => false,
+        'update_object' => true,
+        'unique_key' => 'name',
+        'class' => 'modTemplateVar',
+        'object' => '{"id":null,"source":0,"property_preprocess":0,"type":"image","name":"jsonfeed_image","caption":"Image","description":"","editor_type":0,"category":0,"locked":0,"elements":"","rank":4,"display":"","default_text":"","properties":"a:0:{}","input_properties":"a:1:{s:10:\\"allowBlank\\";i:1;}","output_properties":null,"static":0,"static_file":"","content":""}',
+        'guid' => '8278f48f3baf3424f4346e5b612467c5',
+        'native_key' => NULL,
+        'signature' => '6dc6b5ec57a6c676cae0de4242d88415',
+      ),
+    ),
+  ),
+  'related_object_attributes' => 
+  array (
+    'Children' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 
+      array (
+        0 => 'parent',
+        1 => 'category',
+      ),
+    ),
+    'Snippets' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Chunks' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Templates' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'templatename',
+    ),
+    'TemplateVars' => 
+    array (
+      'preserve_keys' => false,
+      'update_object' => true,
+      'unique_key' => 'name',
+    ),
+    'Plugins' => 
+    array (
+      'unique_key' => 'name',
+      'preserve_keys' => false,
+      'update_object' => true,
+      'related_objects' => true,
+      'related_object_attributes' => 
+      array (
+        'PluginEvents' => 
+        array (
+          'preserve_keys' => true,
+          'update_object' => false,
+          'unique_key' => 
+          array (
+            0 => 'pluginid',
+            1 => 'event',
+          ),
+        ),
+      ),
+    ),
+  ),
+  'namespace' => 'jsonfeed',
+  'resolve' => 
+  array (
+    0 => 
+    array (
+      'type' => 'file',
+      'body' => '{"source":"jsonfeed-1.0.0-pl\\/modCategory\\/b9a33f4ecd602da15de6bc2f8296dcb3\\/0\\/","target":"return MODX_CORE_PATH . \'components\\/\';","name":"jsonfeed"}',
+    ),
+    1 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"jsonfeed-1.0.0-pl\\/modCategory\\/b9a33f4ecd602da15de6bc2f8296dcb3.gpm.resolve.tv_templates.resolver","type":"php","name":"gpm.resolve.tv_templates"}',
+    ),
+    2 => 
+    array (
+      'type' => 'php',
+      'body' => '{"source":"jsonfeed-1.0.0-pl\\/modCategory\\/b9a33f4ecd602da15de6bc2f8296dcb3.gpm.resolve.resources.resolver","type":"php","name":"gpm.resolve.resources"}',
+    ),
+  ),
+  'validate' => NULL,
+  'vehicle_package' => 'transport',
+  'vehicle_class' => 'xPDOObjectVehicle',
+  'guid' => '25e4b006bb2e95e818c205e90fbf9910',
+  'package' => 'modx',
+  'class' => 'modCategory',
+  'signature' => 'b9a33f4ecd602da15de6bc2f8296dcb3',
+  'native_key' => NULL,
+  'object' => '{"id":null,"parent":0,"category":"JsonFeed","rank":0}',
+);

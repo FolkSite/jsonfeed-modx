@@ -45,7 +45,7 @@
               "name": "jsonfeed_html",
               "description": "Use the Content from this resource",
               "type": "listbox",
-              "inputOptionValues": "yes||no",
+              "inputOptionValues": "no||yes",
               "sortOrder": 3,
               "inputProperties": {
                 "allowBlank": 1

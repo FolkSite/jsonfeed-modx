@@ -9,10 +9,10 @@
   'validate' => NULL,
   'vehicle_package' => 'transport',
   'vehicle_class' => 'xPDOObjectVehicle',
-  'guid' => 'f4e1ad4b99c418e8f5fbcc2e867c80d5',
+  'guid' => '868df0061e6745b6a596a4ff470866f3',
   'package' => 'modx',
   'class' => 'modNamespace',
-  'signature' => '47a39afd56abb3c2957effe5ace879d7',
+  'signature' => '75047754d7b16e0cdf56ab80b976d7ea',
   'native_key' => 'jsonfeed',
   'object' => '{"name":"jsonfeed","path":"{core_path}components\\/jsonfeed\\/","assets_path":"{assets_path}components\\/jsonfeed\\/"}',
 );

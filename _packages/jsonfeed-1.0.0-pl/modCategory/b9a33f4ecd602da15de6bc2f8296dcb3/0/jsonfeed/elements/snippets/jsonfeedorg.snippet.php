@@ -65,7 +65,7 @@
 
          /* HTML Choice */
          $html_choice = $res->getTVValue('jsonfeed_html');
-         if(!$html_choice){
+         if($html_choice == "no"){
            $x['html'] = "";
          } else {
            $x['html'] = $res->get('content');
